@@ -1,0 +1,13 @@
+.Input {
+    display: flex;
+}
+
+.Input input {
+    flex: 1;
+    outline: none;
+    border: none;
+    background: #eee;
+    color: #333;
+    padding: 0.5rem 1.8rem;
+    /* border-radius: 0.5rem; */
+}
