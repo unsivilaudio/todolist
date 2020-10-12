@@ -13,7 +13,7 @@ const customInput = props => {
                 onChange={props.handleChange}
                 placeholder={props.placeholder}
             />
-            <Button label={props.btnLabel} />
+            <Button label={props.btnLabel} clicked={props.submitted} />
         </div>
     );
 };

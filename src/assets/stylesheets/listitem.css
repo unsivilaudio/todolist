@@ -1,7 +1,7 @@
 .ListItem {
     color: inherit;
     background: rgba(255, 255, 255, 0.2);
-    font-size: 1.6rem;
+    /* font-size: 2rem; */
     margin: 0.7rem 0;
     padding: 1rem 2.2rem;
 
@@ -14,6 +14,7 @@
     text-decoration: line-through;
 }
 
+.ListItem .Content,
 .ListItem .Actions .Edit,
 .ListItem .Actions .Delete {
     cursor: pointer;
@@ -21,10 +22,10 @@
 }
 
 .ListItem .Actions .Edit:hover {
-    color: rgb(243, 192, 96);
+    color: rgb(255, 197, 88);
 }
 .ListItem .Actions .Delete:hover {
-    color: rgb(223, 29, 29);
+    color: rgb(250, 77, 77);
 }
 
 .ListItem .Actions span:not(:last-child) {
