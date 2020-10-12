@@ -4,13 +4,14 @@ import '../../assets/stylesheets/todolist.css';
 import Card from '../ui/Card';
 import Input from '../ui/Input';
 import ListItem from './listItem';
+import FormItem from './formItem';
 
 class TodoList extends React.Component {
     state = {
         newTodo: '',
         editTodo: '',
         updateTodo: null,
-        todos: ['Buy Groceries', 'Feed the Dogs'],
+        todos: [],
         finishedTodos: [],
     };
 
@@ -18,7 +19,8 @@ class TodoList extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    addNewTodo = () => {
+    addNewTodo = e => {
+        e.preventDefault();
         const newTodo = this.state.newTodo;
         this.setState(prevState => {
             return {
@@ -78,13 +80,11 @@ class TodoList extends React.Component {
             const updateTodo = this.state.updateTodo;
             if (item === updateTodo) {
                 return (
-                    <Input
+                    <FormItem
                         key={id}
-                        name='editTodo'
                         handleChange={this.handleChange}
+                        handleSubmit={() => this.handleEditSubmit(item)}
                         value={this.state.editTodo}
-                        btnLabel='Update'
-                        submitted={() => this.handleEditSubmit(item)}
                     />
                 );
             }

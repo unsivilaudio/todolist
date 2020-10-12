@@ -5,7 +5,7 @@ import Button from './Button';
 
 const customInput = props => {
     return (
-        <div className='Input'>
+        <form className='Input' onSubmit={props.submitted}>
             <input
                 name={props.name}
                 type={props.inputType || 'text'}
@@ -14,7 +14,7 @@ const customInput = props => {
                 placeholder={props.placeholder}
             />
             <Button label={props.btnLabel} clicked={props.submitted} />
-        </div>
+        </form>
     );
 };
 
