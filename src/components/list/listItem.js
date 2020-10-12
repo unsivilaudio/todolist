@@ -12,7 +12,7 @@ const listItem = props => {
                 {props.children}
             </div>
             <div className='Actions'>
-                <span className='Edit'>
+                <span className='Edit' onClick={props.editItem}>
                     <Edit style={{ fontSize: 'inherit' }} />
                 </span>
                 <span className='Delete' onClick={props.deleteItem}>

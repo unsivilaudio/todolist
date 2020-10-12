@@ -8,6 +8,8 @@ import ListItem from './listItem';
 class TodoList extends React.Component {
     state = {
         newTodo: '',
+        editTodo: '',
+        updateTodo: null,
         todos: ['Buy Groceries', 'Feed the Dogs'],
         finishedTodos: [],
     };
@@ -25,6 +27,14 @@ class TodoList extends React.Component {
                 newTodo: '',
             };
         });
+    };
+
+    editTodo = item => {
+        this.setState(prevState => ({
+            ...prevState,
+            updateTodo: item,
+            editTodo: item,
+        }));
     };
 
     removeTodo = item => {
@@ -48,17 +58,44 @@ class TodoList extends React.Component {
         });
     };
 
+    handleEditChange = e => {
+        this.setState({ editTodo: e.target.value });
+    };
+
+    handleEditSubmit = item => {
+        const updatedItem = this.state.editTodo;
+        const todos = this.state.todos.map(el => {
+            if (el === item) return updatedItem;
+            return el;
+        });
+        this.setState({ todos, editTodo: '', updateTodo: null });
+    };
+
     renderTodoItems = () => {
         return this.state.todos.map((item, i) => {
             const id = `${i}-${item.replace(' ', '_')}`;
             const completedTodos = [...this.state.finishedTodos];
+            const updateTodo = this.state.updateTodo;
+            if (item === updateTodo) {
+                return (
+                    <Input
+                        key={id}
+                        name='editTodo'
+                        handleChange={this.handleChange}
+                        value={this.state.editTodo}
+                        btnLabel='Update'
+                        submitted={() => this.handleEditSubmit(item)}
+                    />
+                );
+            }
             return (
                 <ListItem
                     id={id}
                     key={id}
                     completed={completedTodos.includes(item)}
                     clicked={this.toggleCompleted}
-                    deleteItem={() => this.removeTodo(item)}>
+                    deleteItem={() => this.removeTodo(item)}
+                    editItem={() => this.editTodo(item)}>
                     {item}
                 </ListItem>
             );
