@@ -1,0 +1,39 @@
+.ListItem {
+    color: inherit;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0.7rem 0;
+    padding: 1rem 2.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .Content {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &.Done {
+            text-decoration: line-through;
+            color: #c2ced1;
+        }
+    }
+
+    & .Actions {
+        & .Delete,
+        & .Edit {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        & .Edit:hover {
+            color: rgb(255, 197, 88);
+        }
+
+        & .Delete:hover {
+            color: rgb(250, 77, 77);
+        }
+        & span:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+}

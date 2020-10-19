@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../assets/stylesheets/formitem.css';
+import '../../assets/stylesheets/formitem.scss';
 import Input from '../ui/Input';
 
 const formItem = props => {

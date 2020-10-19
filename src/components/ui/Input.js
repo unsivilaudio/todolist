@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../assets/stylesheets/input.css';
+import '../../assets/stylesheets/input.scss';
 import Button from './Button';
 
 const customInput = props => {

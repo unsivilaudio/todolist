@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Delete, Edit } from '@material-ui/icons';
-import '../../assets/stylesheets/listitem.css';
+import '../../assets/stylesheets/listitem.scss';
 
 const listItem = props => {
     return (

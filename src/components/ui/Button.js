@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../assets/stylesheets/button.css';
+import '../../assets/stylesheets/button.scss';
 
 const customButton = props => {
     return (

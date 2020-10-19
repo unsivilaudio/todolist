@@ -1,10 +1,10 @@
 import React from 'react';
 
-import '../../assets/stylesheets/todolist.css';
+import '../../assets/stylesheets/todolist.scss';
 import Card from '../ui/Card';
-import Input from '../ui/Input';
 import ListItem from './listItem';
 import FormItem from './formItem';
+import TodoForm from './TodoForm';
 
 class TodoList extends React.Component {
     state = {
@@ -111,17 +111,11 @@ class TodoList extends React.Component {
                     <hr />
                     <ul className='List'>{this.renderTodoItems()}</ul>
                 </div>
-                <div className='TodoForm'>
-                    <h2 className='InputHeader'>New Todo</h2>
-                    <Input
-                        name='newTodo'
-                        handleChange={this.handleChange}
-                        value={this.state.newTodo}
-                        placeholder='Enter a new todo...'
-                        btnLabel='ADD TODO'
-                        submitted={this.addNewTodo}
-                    />
-                </div>
+                <TodoForm
+                    handleChange={this.handleChange}
+                    todo={this.state.newTodo}
+                    handleNewTodo={this.addNewTodo}
+                />
             </Card>
         );
     }
