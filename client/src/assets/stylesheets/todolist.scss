@@ -1,0 +1,32 @@
+.TodoList {
+    margin-top: 2rem;
+    width: 40vw;
+
+    & hr {
+        color: rgba(255, 255, 255, 0.2);
+        margin: 0 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    & .List {
+        list-style: none;
+    }
+
+    & .Header,
+    & .SubHeader {
+        text-align: left;
+        line-height: 0.7;
+        margin: 1.2rem 2.5rem;
+    }
+
+    & .Header {
+        font-size: 4rem;
+        font-weight: 400;
+    }
+
+    & .SubHeader {
+        font-size: 1.2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+}
