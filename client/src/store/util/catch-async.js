@@ -1,4 +1,4 @@
-import toast from 'helpers/toast';
+import toast from 'components/Toast';
 import { logError } from 'store/log/logActions';
 import Store from 'store';
 
@@ -8,7 +8,7 @@ export const asyncErrorHandler =
         try {
             await asyncFn(...args);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             createLogError(err);
             if (onErrCb) {
                 onErrCb(...args)(err);
@@ -18,7 +18,7 @@ export const asyncErrorHandler =
 
 export const createLogError = err => {
     if (!err || !err.response) return;
-    console.log(err);
+    // console.log(err);
     const statusCode = err.status;
     const { message } = err.response.data;
     Store.dispatch(logError(message, true, statusCode));

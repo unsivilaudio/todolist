@@ -1,4 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {
+    updateTodo,
+    saveTodo,
+    fetchTodos,
+    deleteTodo,
+} from 'store/todos/todoActions';
 
 import '../../assets/stylesheets/todolist.scss';
 import Card from '../ui/Card';
@@ -10,54 +17,43 @@ class TodoList extends React.Component {
     state = {
         newTodo: '',
         editTodo: '',
-        updateTodo: null,
+        editingTodo: null,
         todos: [],
         finishedTodos: [],
     };
+
+    componentDidMount() {
+        if (!this.props.todos.length) {
+            this.props.fetchTodos();
+        }
+    }
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    addNewTodo = e => {
-        e.preventDefault();
-        const newTodo = this.state.newTodo;
-        this.setState(prevState => {
-            return {
-                ...prevState,
-                todos: prevState.todos.concat(newTodo),
-                newTodo: '',
-            };
-        });
+    handleAddNewTodo = e => {
+        const content = this.state.newTodo;
+        this.props.saveTodo({ content });
+        this.setState({ newTodo: '' });
     };
 
-    editTodo = item => {
-        this.setState(prevState => ({
-            ...prevState,
-            updateTodo: item,
-            editTodo: item,
-        }));
+    handleUpdateTodo = item => {
+        this.props.updateTodo(item);
     };
 
-    removeTodo = item => {
-        const updatedTodos = this.state.todos.filter(el => el !== item);
-        this.setState(prevState => {
-            return { ...prevState, todos: updatedTodos };
-        });
+    handleRemoveTodo = id => {
+        this.props.deleteTodo(id);
     };
 
-    toggleCompleted = e => {
-        const item = e.target.textContent;
-        const finishedTodos = [...this.state.finishedTodos];
-        let updatedFinishedTodos;
-        if (finishedTodos.includes(item)) {
-            updatedFinishedTodos = finishedTodos.filter(el => el !== item);
-        } else {
-            updatedFinishedTodos = finishedTodos.concat(item);
-        }
-        this.setState(prevState => {
-            return { ...prevState, finishedTodos: updatedFinishedTodos };
-        });
+    toggleCompleted = item => {
+        item = { ...item, isCompleted: !item.isCompleted };
+        this.props.updateTodo(item);
+    };
+
+    handleEditTodo = item => {
+        const { _id, content } = item;
+        this.setState({ editingTodo: _id, editTodo: content });
     };
 
     handleEditChange = e => {
@@ -65,25 +61,22 @@ class TodoList extends React.Component {
     };
 
     handleEditSubmit = item => {
-        const updatedItem = this.state.editTodo;
-        const todos = this.state.todos.map(el => {
-            if (el === item) return updatedItem;
-            return el;
-        });
-        this.setState({ todos, editTodo: '', updateTodo: null });
+        item.content = this.state.editTodo;
+        this.props.updateTodo(item);
+        this.setState({ editTodo: '', editingTodo: null });
     };
 
-    renderTodoItems = () => {
-        return this.state.todos.map((item, i) => {
-            const id = `${i}-${item.replace(' ', '_')}`;
-            const completedTodos = [...this.state.finishedTodos];
-            const updateTodo = this.state.updateTodo;
-            if (item === updateTodo) {
+    renderTodoItems = (todos = []) => {
+        return todos.map((item, i) => {
+            const { content, isCompleted } = item;
+            const id = item._id;
+            const editingTodo = this.state.editingTodo;
+            if (id === editingTodo) {
                 return (
                     <FormItem
                         key={id}
                         handleChange={this.handleChange}
-                        handleSubmit={() => this.handleEditSubmit(item)}
+                        handleSubmit={this.handleEditSubmit.bind(null, item)}
                         value={this.state.editTodo}
                     />
                 );
@@ -92,11 +85,11 @@ class TodoList extends React.Component {
                 <ListItem
                     id={id}
                     key={id}
-                    completed={completedTodos.includes(item)}
-                    clicked={this.toggleCompleted}
-                    deleteItem={() => this.removeTodo(item)}
-                    editItem={() => this.editTodo(item)}>
-                    {item}
+                    completed={isCompleted}
+                    clicked={this.toggleCompleted.bind(null, item)}
+                    deleteItem={this.handleRemoveTodo.bind(null, id)}
+                    editItem={this.handleEditTodo.bind(null, item)}>
+                    {content}
                 </ListItem>
             );
         });
@@ -109,16 +102,31 @@ class TodoList extends React.Component {
                     <h1 className='Header'>Todo List!</h1>
                     <h3 className='SubHeader'>A Simple React Todo List App</h3>
                     <hr />
-                    <ul className='List'>{this.renderTodoItems()}</ul>
+                    <ul className='List'>
+                        {this.renderTodoItems(this.props.todos)}
+                    </ul>
                 </div>
                 <TodoForm
+                    content={this.state.newTodo}
                     handleChange={this.handleChange}
-                    todo={this.state.newTodo}
-                    handleNewTodo={this.addNewTodo}
+                    handleNewTodo={this.handleAddNewTodo}
                 />
             </Card>
         );
     }
 }
 
-export default TodoList;
+TodoList.defaultProps = {
+    todos: [],
+};
+
+const mapStateToProps = ({ todos }) => {
+    return { todos };
+};
+
+export default connect(mapStateToProps, {
+    saveTodo,
+    updateTodo,
+    fetchTodos,
+    deleteTodo,
+})(TodoList);

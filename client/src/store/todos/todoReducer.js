@@ -10,12 +10,12 @@ const reducer = (state = [], action) => {
             return state;
         case Types.UPDATE_TODO:
             state = state.map(todo => {
-                if (todo.id === action.payload.id) todo = action.payload;
+                if (todo._id === action.payload._id) todo = action.payload;
                 return todo;
             });
             return state;
         case Types.DELETE_TODO:
-            state = state.filter(x => x.id !== action.payload.id);
+            state = state.filter(x => x._id !== action.payload);
             return state;
         default:
             return state;
