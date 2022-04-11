@@ -1,11 +1,11 @@
 import React from 'react';
 
-import '../../assets/stylesheets/button.scss';
+import classes from 'styles/ui/Button.module.scss';
 
-const customButton = props => {
+const Button = props => {
     return (
         <button
-            className='Button'
+            className={classes.Button}
             onClick={props.clicked}
             type={props.btnType || 'button'}>
             {props.label}
@@ -13,4 +13,4 @@ const customButton = props => {
     );
 };
 
-export default customButton;
+export default Button;

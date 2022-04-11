@@ -1,21 +1,25 @@
 import React from 'react';
 
-import '../../assets/stylesheets/input.scss';
-import Button from './Button';
+import classes from 'styles/ui/Input.module.scss';
 
-const customInput = props => {
+const Input = ({ submitted, name, type, value, handleChange, placeholder }) => {
+    function onEnterSubmit(e) {
+        if (e.key === 'Enter') {
+            submitted();
+        }
+    }
+
     return (
-        <div className='Input' onSubmit={props.submitted}>
-            <input
-                name={props.name}
-                type={props.inputType || 'text'}
-                value={props.value}
-                onChange={props.handleChange}
-                placeholder={props.placeholder}
-            />
-            <Button label={props.btnLabel} clicked={props.submitted} />
-        </div>
+        <input
+            className={classes.Input}
+            name={name}
+            type={type || 'text'}
+            value={value}
+            onChange={handleChange}
+            placeholder={placeholder}
+            onKeyPress={onEnterSubmit}
+        />
     );
 };
 
-export default customInput;
+export default Input;
