@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import { useActions } from 'hooks/use-actions';
 
 import classes from 'styles/todo/TodoList.module.scss';
-import Card from 'components/ui/Card';
 import TodoListItem from 'components/todo/TodoListItem';
-import TodoForm from 'components/todo/TodoForm';
 import TodoFormItem from 'components/todo/TodoFormItem';
 
 const TodoList = props => {
