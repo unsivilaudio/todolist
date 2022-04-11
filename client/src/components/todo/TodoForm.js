@@ -16,12 +16,13 @@ const TodoForm = props => {
     function handleAddTodo() {
         if (content === '') return;
         saveTodo({ content });
+        setContent('');
     }
 
     return (
         <div className={classes.TodoForm}>
             <h2 className={classes.InputHeader}>New Todo</h2>
-            <form className={classes.AddForm} onSubmit={handleAddTodo}>
+            <div className={classes.AddForm} onSubmit={handleAddTodo}>
                 <Input
                     handleChange={handleChangeContent}
                     value={content}
@@ -29,7 +30,7 @@ const TodoForm = props => {
                     submitted={handleAddTodo}
                 />
                 <Button label='add todo' clicked={handleAddTodo} />
-            </form>
+            </div>
         </div>
     );
 };

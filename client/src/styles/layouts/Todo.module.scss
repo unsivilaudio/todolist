@@ -1,0 +1,17 @@
+.Todo {
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+@media screen and (max-width: 56.25em) {
+    .Todo {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 30em) {
+    .Todo {
+        margin-top: 0;
+        min-height: 100vh;
+    }
+}

@@ -5,7 +5,7 @@ import classes from 'styles/todo/TodoFormItem.module.scss';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
 
-const TodoFormItem = ({ item, cancelEdit, handleSubmit }) => {
+const TodoFormItem = ({ item, cancelEdit }) => {
     const [editContent, setEditContent] = useState('');
     const { updateTodo } = useActions();
 
@@ -32,7 +32,7 @@ const TodoFormItem = ({ item, cancelEdit, handleSubmit }) => {
                 handleChange={handleChange}
                 submitted={handleEditSubmit}
             />
-            <Button label='save' clicked={handleSubmit} />
+            <Button label='save' clicked={handleEditSubmit} />
         </li>
     );
 };

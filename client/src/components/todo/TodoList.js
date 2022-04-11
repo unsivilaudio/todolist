@@ -77,17 +77,14 @@ const TodoList = props => {
     };
 
     return (
-        <Card>
-            <div className={classes.TodoList}>
-                <h1 className={classes.Header}>Todo List!</h1>
-                <h3 className={classes.SubHeader}>
-                    A Simple React Todo List App
-                </h3>
-                <hr />
-                <ul className={classes.List}>{renderTodoItems(todos)}</ul>
-            </div>
-            <TodoForm />
-        </Card>
+        <div className={classes.TodoList}>
+            <h1 className={classes.Header}>
+                Todo <span>List!</span>
+            </h1>
+            <h3 className={classes.SubHeader}>A Simple React Todo List App</h3>
+            <hr />
+            <ul className={classes.List}>{renderTodoItems(todos)}</ul>
+        </div>
     );
 };
 

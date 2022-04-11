@@ -1,6 +1,6 @@
 .TodoForm {
     margin: 0 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
 
     .InputHeader {
         font-size: 2.5rem;
@@ -26,6 +26,58 @@
 
         button {
             text-transform: uppercase;
+        }
+    }
+}
+
+@media screen and (max-width: 75em) {
+    .TodoForm {
+        .AddForm {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+@media screen and (max-width: 56.25em) {
+    .TodoForm {
+        .AddForm {
+            font-size: 1.8rem;
+
+            button,
+            input {
+                padding: 1rem 1.6rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 48.75em) {
+    .TodoForm {
+        .AddForm {
+            font-size: 2rem;
+        }
+    }
+}
+
+@media screen and (max-width: 36.25em) {
+    .TodoForm {
+        .InputHeader {
+            font-size: 3.5rem;
+        }
+
+        .AddForm {
+            font-size: 2.2rem;
+            flex-direction: column;
+            gap: 2.5rem;
+
+            input,
+            button {
+                border-radius: 1rem;
+            }
+
+            button {
+                box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.18);
+            }
         }
     }
 }

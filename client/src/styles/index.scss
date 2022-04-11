@@ -23,11 +23,11 @@ html {
     font-family: 'Montserrat', sans-serif;
     font-size: 62.5%;
     box-sizing: border-box;
+    min-height: 100vh;
 }
 
 body {
     background: linear-gradient(to bottom, #bbd2c5 10%, #536976 80%);
-    min-height: 100vh;
     font-weight: 300;
     font-size: 1.6rem;
 }

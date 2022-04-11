@@ -1,6 +1,31 @@
 .App {
-    margin-top: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
+    max-width: 90rem;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 75em) {
+    .App {
+        max-width: unset;
+    }
+}
+
+@media screen and (max-width: 56.25em) {
+    .App {
+        width: 90%;
+        padding: 0 2rem;
+    }
+}
+
+@media screen and (max-width: 48.75em) {
+    .App {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 30em) {
+    .App {
+        width: 100%;
+        padding: 0;
+    }
 }
