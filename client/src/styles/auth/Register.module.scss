@@ -1,0 +1,83 @@
+.Register {
+    padding: 2rem 0;
+    font-size: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .Header {
+        line-height: normal;
+        flex-basis: 100%;
+        text-align: center;
+
+        .Brand {
+            font-size: 3rem;
+            font-weight: 100;
+        }
+
+        .Title {
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin-top: 2rem;
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 3px var(--color-black);
+            letter-spacing: 7px;
+        }
+    }
+
+    .Form {
+        width: 100%;
+        padding: 0 5rem;
+        padding-bottom: 1rem;
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        .FormGroup {
+            margin-top: 1rem;
+            &:first-child {
+                margin-top: 0;
+            }
+
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin: 0;
+                padding: 0;
+                text-transform: uppercase;
+                font-size: 1.6rem;
+                font-weight: 500;
+            }
+
+            input {
+                font-size: inherit;
+                border-radius: 0.7rem;
+            }
+        }
+
+        button {
+            padding: 0.8rem 1.2rem;
+            border-radius: 1rem;
+            margin-top: 2.2rem;
+        }
+
+        .HelpText {
+            margin-top: 1rem;
+            font-size: 1.6rem;
+
+            a {
+                color: #3a3a3a;
+                text-decoration: none;
+                transition: color 0.3s ease-in-out;
+
+                &:hover {
+                    color: var(--color-white);
+                }
+            }
+        }
+    }
+}
