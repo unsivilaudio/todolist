@@ -3,7 +3,9 @@ import express, { Request, Response } from 'express';
 // @ts-ignore
 import cors from 'cors';
 
+import requireAuth from './middleware/requireAuth';
 import errorHandler from './handlers/errorHandler';
+import authRoutes from './routes/authRoutes';
 import todoRoutes from './routes/todoRoutes';
 import mongo from './models';
 import Logger from './util/logger';
@@ -30,6 +32,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 const apiRouter = express.Router({ mergeParams: true });
+apiRouter.use('/auth', authRoutes);
+apiRouter.use(requireAuth);
 apiRouter.use('/todos', todoRoutes);
 
 app.use('/api', apiRouter);

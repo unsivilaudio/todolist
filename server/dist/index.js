@@ -7,7 +7,9 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 // @ts-ignore
 const cors_1 = __importDefault(require("cors"));
+const requireAuth_1 = __importDefault(require("./middleware/requireAuth"));
 const errorHandler_1 = __importDefault(require("./handlers/errorHandler"));
+const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const todoRoutes_1 = __importDefault(require("./routes/todoRoutes"));
 const models_1 = __importDefault(require("./models"));
 const logger_1 = __importDefault(require("./util/logger"));
@@ -27,6 +29,8 @@ app.get('/', (req, res) => {
     });
 });
 const apiRouter = express_1.default.Router({ mergeParams: true });
+apiRouter.use('/auth', authRoutes_1.default);
+apiRouter.use(requireAuth_1.default);
 apiRouter.use('/todos', todoRoutes_1.default);
 app.use('/api', apiRouter);
 app.use((req, res, next) => {
