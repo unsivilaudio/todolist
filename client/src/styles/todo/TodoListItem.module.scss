@@ -1,12 +1,13 @@
 .TodoListItem {
     color: inherit;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--bg-transparent-light);
     margin: 0.7rem 0;
     padding: 1rem 2.2rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 
     .Content {
         cursor: pointer;
@@ -14,7 +15,7 @@
 
         &.Done {
             text-decoration: line-through;
-            color: #c2ced1;
+            color: var(--text-muted);
         }
     }
 
@@ -23,6 +24,10 @@
     }
 
     .Actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         .Delete,
         .Edit {
             cursor: pointer;
@@ -162,7 +167,7 @@
                     color: currentColor;
                 }
                 button {
-                    background-color: rgb(40, 140, 197);
+                    background-color: var(--button-color-primary);
                 }
             }
 
@@ -171,7 +176,7 @@
                     color: currentColor;
                 }
                 button {
-                    background-color: rgb(250, 77, 77);
+                    background-color: var(--button-color-secondary);
                 }
             }
         }

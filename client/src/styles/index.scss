@@ -4,8 +4,24 @@
     --color-white: #ececec;
     --color-black: #2d2d2d;
 
+    --bg-transparent-light: rgba(255, 255, 255, 0.2);
+
+    --text-white: #ececec;
+    --text-muted: #c2ced1;
+    --text-black: #2d2d2d;
+
     --input-color-bg: #eee;
     --input-color-fg: #3d3d3d;
+
+    --button-color-primary: #493ec1;
+    --button-color-primary-hover: #3122d2;
+    --button-color-secondary: #c1493e;
+    --button-color-secondary-hover: #d83829;
+    --button-color-tertiary: #3ec149;
+    --button-color-tertiary-hover: #27d735;
+
+    --button-shadow-sm: 0 2px 3px 1px rgba(0, 0, 0, 0.18);
+    --button-shadow-lg: 0 3px 7px 1px rgba(0, 0, 0, 0.35);
 }
 
 * {
