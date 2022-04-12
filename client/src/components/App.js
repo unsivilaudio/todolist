@@ -4,8 +4,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import classes from 'styles/App.module.scss';
 import Todo from 'layouts/Todo';
 import Auth from 'layouts/Auth';
-import Login from './auth/Login';
-import Register from './auth/Register';
 
 const App = props => {
     return (

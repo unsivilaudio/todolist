@@ -67,7 +67,12 @@ const Register = ({ loading }) => {
                         value={values['passwordConfirm']}
                     />
                 </div>
-                <Button label='Sign Up' disabled={!loading} />
+                <Button
+                    theme='transparent'
+                    label='Sign Up'
+                    clicked={handleSubmit}
+                    disabled={!loading}
+                />
                 <p className={classes.HelpText}>
                     <Link to='/auth/login'>
                         Already registered? Log in here.

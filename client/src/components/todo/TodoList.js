@@ -5,10 +5,11 @@ import { useActions } from 'hooks/use-actions';
 import classes from 'styles/todo/TodoList.module.scss';
 import TodoListItem from 'components/todo/TodoListItem';
 import TodoFormItem from 'components/todo/TodoFormItem';
+import { Link } from 'react-router-dom';
 
 const TodoList = props => {
     const [editing, setEditing] = useState([]);
-    const { todos } = useSelector(state => state);
+    const { todos, auth } = useSelector(state => state);
     const { fetchTodos, updateTodo, deleteTodo } = useActions();
 
     useEffect(() => {
@@ -26,8 +27,8 @@ const TodoList = props => {
     }, []);
 
     useEffect(() => {
-        if (!todos.length) fetchTodos();
-    }, [todos, fetchTodos]);
+        if (!todos.length && auth.user) fetchTodos();
+    }, [auth.user, todos, fetchTodos]);
 
     function startEditTodo(id) {
         setEditing(st => st.concat(id));
@@ -74,6 +75,15 @@ const TodoList = props => {
         });
     };
 
+    const notifyAuth = (
+        <div className={classes.AuthCTA}>
+            <div className={classes.Title}>Please Login To Get Started</div>
+            <p className={classes.Actions}>
+                <Link to='/auth/login'>Login</Link>
+            </p>
+        </div>
+    );
+
     return (
         <div className={classes.TodoList}>
             <h1 className={classes.Header}>
@@ -81,7 +91,9 @@ const TodoList = props => {
             </h1>
             <h3 className={classes.SubHeader}>A Simple React Todo List App</h3>
             <hr />
-            <ul className={classes.List}>{renderTodoItems(todos)}</ul>
+            <ul className={classes.List}>
+                {!auth.user ? notifyAuth : renderTodoItems(todos)}
+            </ul>
         </div>
     );
 };

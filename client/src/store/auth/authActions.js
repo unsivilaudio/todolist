@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios from 'store/util/use-axios';
 import { asyncErrorHandler, toastActionError } from 'store/util/catch-async';
 import * as Types from 'store/auth/authTypes';
+import toastMessage from 'components/Toast';
 
 export const startRegister = {
     type: Types.REGISTER_USER_START,
@@ -18,8 +19,13 @@ export const loginUser = user =>
 
             dispatch({
                 type: Types.LOGIN_USER_SUCCESS,
-                payload: data.data,
+                payload: {
+                    user: data.user,
+                    token: data.token,
+                },
             });
+
+            if (data.message) toastMessage({ message: data.message });
         },
         dispatch => err => {
             dispatch({
@@ -38,8 +44,13 @@ export const registerUser = user =>
 
             dispatch({
                 type: Types.REGISTER_USER_SUCCESS,
-                payload: data.data,
+                payload: {
+                    user: data.user,
+                    token: data.token,
+                },
             });
+
+            if (data.message) toastMessage({ message: data.message });
         },
         dispatch => err => {
             dispatch({
@@ -57,8 +68,13 @@ export const tokenLogin = token =>
 
             dispatch({
                 type: Types.TOKEN_LOGIN,
-                payload: data.data,
+                payload: {
+                    user: data.user,
+                    token,
+                },
             });
+
+            if (data.message) toastMessage({ message: data.message });
         },
         dispatch => err => {
             dispatch({

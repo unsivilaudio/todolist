@@ -45,7 +45,12 @@ const Login = ({ loading }) => {
                         value={values['password']}
                     />
                 </div>
-                <Button theme='transparent' label='Login' disabled={!loading} />
+                <Button
+                    theme='transparent'
+                    label='Login'
+                    disabled={!loading}
+                    clicked={handleSubmit}
+                />
                 <p className={classes.HelpText}>
                     <Link to='/auth/register'>
                         Not a member yet? Register here.
