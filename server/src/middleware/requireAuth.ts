@@ -1,7 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
-import { verify } from 'jsonwebtoken';
+import { verify, JwtPayload } from 'jsonwebtoken';
 
 import catchAsync from '../util/catch-async';
+
+interface JwtUser extends JwtPayload {
+    id: string;
+    iat: number;
+    exp: number;
+}
 
 const requireAuth = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
@@ -11,10 +17,12 @@ const requireAuth = catchAsync(
         }
 
         const token = req.headers.authorization.split(' ')[1];
-        const valid = verify(token, secret);
+        const valid = verify(token, secret) as JwtUser;
         if (!valid) {
             throw new Error('Invalid or expired token, please log in again.');
         }
+
+        res.locals.userId = valid.id;
 
         next();
     }

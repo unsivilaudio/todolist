@@ -15,6 +15,7 @@ const requireAuth = (0, catch_async_1.default)(async (req, res, next) => {
     if (!valid) {
         throw new Error('Invalid or expired token, please log in again.');
     }
+    res.locals.userId = valid.id;
     next();
 });
 exports.default = requireAuth;
