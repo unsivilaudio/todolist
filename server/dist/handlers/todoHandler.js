@@ -15,11 +15,15 @@ exports.getTodos = (0, catch_async_1.default)(async (req, res, next) => {
     });
 });
 exports.createTodo = (0, catch_async_1.default)(async (req, res, next) => {
-    const { content } = req.body;
+    const { content, category } = req.body;
     const author = res.locals.userId;
     if (!content)
         throw new Error('You must provide some content.');
-    const todo = await todo_1.default.create({ author, content });
+    const todo = await todo_1.default.create({
+        author,
+        content,
+        category: category || 'default',
+    });
     res.status(201).json({
         status: 'success',
         message: 'Sucessfully created new todo.',

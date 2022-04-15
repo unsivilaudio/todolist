@@ -16,11 +16,15 @@ export const getTodos = catchAsync(
 
 export const createTodo = catchAsync(
     async (req: Request, res: Response, next: NextFunction) => {
-        const { content } = req.body;
+        const { content, category } = req.body;
         const author = res.locals.userId;
         if (!content) throw new Error('You must provide some content.');
 
-        const todo = await Todo.create({ author, content });
+        const todo = await Todo.create({
+            author,
+            content,
+            category: category || 'default',
+        });
 
         res.status(201).json({
             status: 'success',

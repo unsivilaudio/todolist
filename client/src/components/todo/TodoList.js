@@ -7,10 +7,10 @@ import TodoListItem from 'components/todo/TodoListItem';
 import TodoFormItem from 'components/todo/TodoFormItem';
 import { Link } from 'react-router-dom';
 
-const TodoList = props => {
+const TodoList = ({ data }) => {
     const [editing, setEditing] = useState([]);
-    const { todos, auth } = useSelector(state => state);
-    const { fetchTodos, updateTodo, deleteTodo } = useActions();
+    const { auth } = useSelector(state => state);
+    const { updateTodo, deleteTodo } = useActions();
 
     useEffect(() => {
         function escapeEdit(e) {
@@ -25,10 +25,6 @@ const TodoList = props => {
             window.removeEventListener('keydown', escapeEdit);
         };
     }, []);
-
-    useEffect(() => {
-        if (!todos.length && auth.user) fetchTodos();
-    }, [auth.user, todos, fetchTodos]);
 
     function startEditTodo(id) {
         setEditing(st => st.concat(id));
@@ -86,13 +82,8 @@ const TodoList = props => {
 
     return (
         <div className={classes.TodoList}>
-            <h1 className={classes.Header}>
-                Todo <span>List!</span>
-            </h1>
-            <h3 className={classes.SubHeader}>A Simple React Todo List App</h3>
-            <hr />
             <ul className={classes.List}>
-                {!auth.user ? notifyAuth : renderTodoItems(todos)}
+                {!auth.user ? notifyAuth : renderTodoItems(data)}
             </ul>
         </div>
     );

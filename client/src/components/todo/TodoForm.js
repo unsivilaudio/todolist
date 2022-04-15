@@ -5,7 +5,7 @@ import Input from 'components/ui/Input';
 import classes from 'styles/todo/TodoForm.module.scss';
 import Button from 'components/ui/Button';
 
-const TodoForm = props => {
+const TodoForm = ({ category = 'default' }) => {
     const { saveTodo } = useActions();
     const [content, setContent] = useState('');
 
@@ -15,7 +15,7 @@ const TodoForm = props => {
 
     function handleAddTodo() {
         if (content === '') return;
-        saveTodo({ content });
+        saveTodo({ content, category });
         setContent('');
     }
 
