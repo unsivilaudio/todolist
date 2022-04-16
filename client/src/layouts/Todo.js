@@ -13,10 +13,9 @@ const Todo = props => {
     const { todos, auth } = useSelector(state => state);
     const { fetchTodos } = useActions();
     const [selectedCat, setSelectedCat] = useState('default');
-    const categories = new Set([
-        'default',
-        ...todos.map(x => x.category || 'default'),
-    ]);
+    const categories = [
+        ...new Set(['default', ...todos.map(x => x.category || 'default')]),
+    ];
 
     useEffect(() => {
         if (auth.user && todos.length === 0) fetchTodos();

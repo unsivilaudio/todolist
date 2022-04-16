@@ -1,5 +1,5 @@
 .TodoTabs {
-    --border-color: rgba(255, 255, 255, 0.7);
+    --border-color: rgb(235, 236, 243);
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -24,7 +24,7 @@
     .Tab {
         cursor: pointer;
         position: relative;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgb(176, 177, 183);
         border-top-left-radius: 0.7rem;
         border-top-right-radius: 0.7rem;
         transition: all 0.3s ease;

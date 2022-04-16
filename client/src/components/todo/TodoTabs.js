@@ -7,6 +7,10 @@ const TodoTabs = ({ changeCategory, categories }) => {
     const [labels, setLabels] = useState(['default']);
 
     useEffect(() => {
+        setLabels(categories);
+    }, [categories]);
+
+    useEffect(() => {
         changeCategory(selected);
     }, [selected, changeCategory]);
 
