@@ -9,6 +9,7 @@ const TodoListItem = props => {
     const [mobileExpand, setMobileExpand] = useState(false);
 
     function toggleMobileExpand() {
+        if (window.visualViewport.width > 580) return;
         setMobileExpand(st => !st);
     }
 

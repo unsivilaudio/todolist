@@ -1,8 +1,10 @@
 import * as Types from 'store/auth/authTypes';
 import produce from 'immer';
 
+const token = sessionStorage.token || localStorage.token || null;
+
 const __INITIAL_STATE = {
-    token: null,
+    token,
     user: null,
     loading: false,
 };

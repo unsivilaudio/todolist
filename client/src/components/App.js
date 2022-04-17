@@ -5,7 +5,7 @@ import classes from 'styles/App.module.scss';
 import Todo from 'layouts/Todo';
 import Auth from 'layouts/Auth';
 
-const App = props => {
+const App = () => {
     return (
         <div className={classes.App}>
             <Routes>

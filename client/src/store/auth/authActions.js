@@ -64,7 +64,9 @@ export const registerUser = user =>
 export const tokenLogin = token =>
     asyncErrorHandler(
         async dispatch => {
-            const { data } = await axios.get('/auth/token', { token });
+            const { data } = await axios.get('/auth/login', {
+                params: { token },
+            });
 
             dispatch({
                 type: Types.TOKEN_LOGIN,
