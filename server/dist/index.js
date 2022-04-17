@@ -12,7 +12,7 @@ const errorHandler_1 = __importDefault(require("./handlers/errorHandler"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const todoRoutes_1 = __importDefault(require("./routes/todoRoutes"));
 const models_1 = __importDefault(require("./models"));
-const logger_1 = __importDefault(require("./util/logger"));
+const logger_1 = __importDefault(require("express-better-logger/dist/logger"));
 const log = new logger_1.default('express');
 const app = (0, express_1.default)();
 app.use(express_1.default.json());

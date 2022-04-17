@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const logger_1 = __importDefault(require("../util/logger"));
+const express_better_logger_1 = __importDefault(require("express-better-logger"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const log = new logger_1.default('mongoose');
+const log = new express_better_logger_1.default('mongoose');
 const connectDB = async (uri, opts) => {
     return await mongoose_1.default.connect(uri, opts);
 };

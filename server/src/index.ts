@@ -8,7 +8,7 @@ import errorHandler from './handlers/errorHandler';
 import authRoutes from './routes/authRoutes';
 import todoRoutes from './routes/todoRoutes';
 import mongo from './models';
-import Logger from './util/logger';
+import Logger from 'express-better-logger/dist/logger';
 
 const log = new Logger('express');
 const app = express();
