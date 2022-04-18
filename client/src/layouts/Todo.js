@@ -39,12 +39,14 @@ const Todo = props => {
                     A Simple React Todo List App
                 </h3>
                 <hr />
-                <TodoTabs
-                    changeCategory={setSelectedCat}
-                    categories={categories}
-                />
+                {auth.user && (
+                    <TodoTabs
+                        changeCategory={setSelectedCat}
+                        categories={categories}
+                    />
+                )}
                 <TodoList data={todoData} />
-                <TodoForm category={selectedCat} />
+                <TodoForm category={selectedCat} user={auth.user} />
             </div>
         </Card>
     );

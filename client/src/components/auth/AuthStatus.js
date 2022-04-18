@@ -12,6 +12,8 @@ const AuthStatus = ({ user }) => {
         logoutUser();
     }
 
+    if (!user) return null;
+
     return (
         <div className={classes.AuthStatus}>
             <p className={classes.User}>Logged in as {user.username}</p>

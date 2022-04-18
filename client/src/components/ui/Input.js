@@ -2,9 +2,17 @@ import React from 'react';
 
 import classes from 'styles/ui/Input.module.scss';
 
-const Input = ({ submitted, name, type, value, handleChange, placeholder }) => {
+const Input = ({
+    submitted,
+    name,
+    type,
+    value,
+    handleChange,
+    placeholder,
+    disabled,
+}) => {
     function onEnterSubmit(e) {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && submitted) {
             submitted();
         }
     }
@@ -18,6 +26,7 @@ const Input = ({ submitted, name, type, value, handleChange, placeholder }) => {
             onChange={handleChange}
             placeholder={placeholder}
             onKeyPress={onEnterSubmit}
+            disabled={disabled}
         />
     );
 };

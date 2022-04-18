@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'hooks/use-controlled-form';
 import { useActions } from 'hooks/use-actions';
 
+import Loader from 'components/ui/Loader';
 import Input from 'components/ui/Input';
-import classes from 'styles/auth/Login.module.scss';
 import Button from 'components/ui/Button';
+import classes from 'styles/auth/Login.module.scss';
 
 const Login = ({ loading }) => {
     const { values, onChange } = useForm({ fields: ['userid', 'password'] });
@@ -30,6 +31,7 @@ const Login = ({ loading }) => {
                     <Input
                         type='text'
                         name='userid'
+                        disabled={loading}
                         placeholder='email/username'
                         handleChange={onChange}
                         value={values['userId']}
@@ -40,6 +42,7 @@ const Login = ({ loading }) => {
                     <Input
                         type='password'
                         name='password'
+                        disabled={loading}
                         placeholder='password'
                         handleChange={onChange}
                         value={values['password']}
@@ -47,8 +50,8 @@ const Login = ({ loading }) => {
                 </div>
                 <Button
                     theme='transparent'
-                    label='Login'
-                    disabled={!loading}
+                    label={loading ? <Loader /> : 'Login'}
+                    disabled={loading}
                     clicked={handleSubmit}
                 />
                 <p className={classes.HelpText}>

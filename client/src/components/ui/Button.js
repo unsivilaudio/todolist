@@ -25,6 +25,7 @@ const Button = props => {
         <button
             className={btnClasses.join(' ')}
             onClick={props.clicked}
+            disabled={props.disabled || false}
             type={props.btnType || 'button'}>
             {props.label}
         </button>

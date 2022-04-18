@@ -10,4 +10,9 @@
     &:focus-within {
         box-shadow: 0 0 5px 1px rgba(42, 135, 222, 0.7);
     }
+
+    &[disabled] {
+        background: #ccc;
+        color: #777;
+    }
 }

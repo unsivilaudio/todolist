@@ -5,7 +5,7 @@ import Input from 'components/ui/Input';
 import classes from 'styles/todo/TodoForm.module.scss';
 import Button from 'components/ui/Button';
 
-const TodoForm = ({ category = 'default' }) => {
+const TodoForm = ({ category = 'default', user }) => {
     const { saveTodo } = useActions();
     const [content, setContent] = useState('');
 
@@ -28,8 +28,13 @@ const TodoForm = ({ category = 'default' }) => {
                     value={content}
                     placeholder='Enter a new todo...'
                     submitted={handleAddTodo}
+                    disabled={!user}
                 />
-                <Button label='add todo' clicked={handleAddTodo} />
+                <Button
+                    label='add todo'
+                    clicked={handleAddTodo}
+                    disabled={!user}
+                />
             </div>
         </div>
     );

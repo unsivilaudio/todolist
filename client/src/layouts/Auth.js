@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
@@ -11,8 +11,9 @@ const LazyRegister = lazy(() => import('components/auth/Register'));
 const Loading = <h1>Loading...</h1>;
 
 const Auth = props => {
+    const [loading, setLoading] = useState(false);
     const { auth } = useSelector(state => state);
-    const { user, token, loading } = auth;
+    const { user, token } = auth;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,6 +21,10 @@ const Auth = props => {
             navigate('/todos', { replace: true });
         }
     }, [token, user, navigate]);
+
+    useEffect(() => {
+        setLoading(auth.loading);
+    }, [auth.loading]);
 
     return (
         <div className={classes.Auth}>

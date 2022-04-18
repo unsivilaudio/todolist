@@ -55,4 +55,18 @@
             background: var(--button-color-tertiary-hover);
         }
     }
+
+    &[disabled] {
+        background: #afafaf;
+        color: #777;
+        box-shadow: none;
+        transform: translateY(0);
+
+        &:hover {
+            background: #afafaf;
+            color: #777;
+            box-shadow: none;
+            transform: translateY(0);
+        }
+    }
 }

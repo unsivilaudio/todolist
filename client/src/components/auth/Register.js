@@ -4,8 +4,9 @@ import { useForm } from 'hooks/use-controlled-form';
 import { useActions } from 'hooks/use-actions';
 
 import Input from 'components/ui/Input';
-import classes from 'styles/auth/Login.module.scss';
 import Button from 'components/ui/Button';
+import Loader from 'components/ui/Loader';
+import classes from 'styles/auth/Login.module.scss';
 
 const Register = ({ loading }) => {
     const { values, onChange } = useForm({
@@ -34,6 +35,7 @@ const Register = ({ loading }) => {
                     <Input
                         type='text'
                         name='username'
+                        disabled={loading}
                         placeholder='johnsmith123'
                         handleChange={onChange}
                         value={values['username']}
@@ -44,6 +46,7 @@ const Register = ({ loading }) => {
                     <Input
                         type='email'
                         name='email'
+                        disabled={loading}
                         placeholder='john@smith.com'
                         handleChange={onChange}
                         value={values['email']}
@@ -54,6 +57,7 @@ const Register = ({ loading }) => {
                     <Input
                         type='password'
                         name='password'
+                        disabled={loading}
                         handleChange={onChange}
                         value={values['password']}
                     />
@@ -63,15 +67,16 @@ const Register = ({ loading }) => {
                     <Input
                         type='password'
                         name='passwordConfirm'
+                        disabled={loading}
                         handleChange={onChange}
                         value={values['passwordConfirm']}
                     />
                 </div>
                 <Button
                     theme='transparent'
-                    label='Sign Up'
+                    label={loading ? <Loader /> : 'Sign Up'}
                     clicked={handleSubmit}
-                    disabled={!loading}
+                    disabled={loading}
                 />
                 <p className={classes.HelpText}>
                     <Link to='/auth/login'>
