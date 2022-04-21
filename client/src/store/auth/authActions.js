@@ -8,7 +8,7 @@ export const startRegister = {
 };
 
 export const startLogin = {
-    type: Types.REGISTER_USER_START,
+    type: Types.LOGIN_USER_START,
 };
 
 export const loginUser = user =>
@@ -29,7 +29,7 @@ export const loginUser = user =>
         },
         dispatch => err => {
             dispatch({
-                types: Types.LOGIN_USER_FAIL,
+                type: Types.LOGIN_USER_FAIL,
                 payload: err.message,
             });
             toastActionError()(err);
