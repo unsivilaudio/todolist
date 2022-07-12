@@ -54,3 +54,17 @@ export const deleteTodo = id =>
             toast({ type: 'info', message: data.message });
         }
     }, toastActionError);
+
+export const addCategory = category => dispatch => {
+    dispatch({
+        type: Types.ADD_CATEGORY,
+        payload: category,
+    });
+};
+
+export const removeCategory = category => dispatch => {
+    dispatch({
+        type: Types.DELETE_CATEGORY,
+        payload: category,
+    });
+};

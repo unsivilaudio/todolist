@@ -10,24 +10,21 @@ import TodoTabs from 'components/todo/TodoTabs';
 import classes from 'styles/layouts/Todo.module.scss';
 
 const Todo = props => {
-    const { todos, auth } = useSelector(state => state);
     const { fetchTodos } = useActions();
+    const { todos, auth } = useSelector(state => state);
     const [selectedCat, setSelectedCat] = useState('default');
-    const categories = [
-        ...new Set(['default', ...todos.map(x => x.category || 'default')]),
-    ];
 
     useEffect(() => {
-        if (auth.user && todos.length === 0) fetchTodos();
+        if (auth.user && todos.items.length === 0) fetchTodos();
     }, [auth, fetchTodos, todos]);
 
     const todoData = useMemo(() => {
-        return todos.filter(x => {
+        return todos.items.filter(x => {
             if (selectedCat === 'default')
                 return !x.category || x.category === 'default';
             return x.category === selectedCat;
         });
-    }, [selectedCat, todos]);
+    }, [selectedCat, todos.items]);
 
     return (
         <Card>
@@ -39,12 +36,7 @@ const Todo = props => {
                     A Simple React Todo List App
                 </h3>
                 <hr />
-                {auth.user && (
-                    <TodoTabs
-                        changeCategory={setSelectedCat}
-                        categories={categories}
-                    />
-                )}
+                {auth.user && <TodoTabs changeCategory={setSelectedCat} />}
                 <TodoList data={todoData} />
                 <TodoForm category={selectedCat} user={auth.user} />
             </div>

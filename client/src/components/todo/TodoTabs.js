@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { useActions } from 'hooks/use-actions';
 
 import classes from 'styles/todo/TodoTabs.module.scss';
+import { useCallback } from 'react';
 
-const TodoTabs = ({ changeCategory, categories }) => {
-    const { showAddCategory } = useActions();
+const TodoTabs = ({ changeCategory }) => {
+    const { showAddCategory, removeCategory } = useActions();
+    const { items, categories } = useSelector(state => state.todos);
     const [selected, setSelected] = useState('default');
     const [labels, setLabels] = useState(['default']);
 
@@ -21,12 +24,18 @@ const TodoTabs = ({ changeCategory, categories }) => {
     }
 
     function handleAddCategory() {
-        // const name = prompt('Enter a new category: ');
-        // if (name.trim() !== '') {
-        //     setLabels(st => [...st, name]);
-        // }
         showAddCategory(true);
     }
+
+    const handleRemoveCategory = useCallback(
+        cat => {
+            console.log('TRYING TO REMOVE CAT');
+            if (!items.some(x => x.category === cat)) {
+                removeCategory(cat);
+            }
+        },
+        [items, removeCategory]
+    );
 
     const tabulation = useMemo(
         () =>
@@ -41,10 +50,18 @@ const TodoTabs = ({ changeCategory, categories }) => {
                     <div
                         className={classes.Border}
                         onClick={handleChangeTab.bind(null, tab)}></div>
-                    <p className={classes.Content}>{tab}</p>
+                    <p className={classes.Content}>
+                        {tab}{' '}
+                        {tab !== 'default' && (
+                            <span
+                                onClick={handleRemoveCategory.bind(null, tab)}>
+                                X
+                            </span>
+                        )}
+                    </p>
                 </div>
             )),
-        [labels, selected]
+        [labels, selected, handleRemoveCategory]
     );
 
     return (

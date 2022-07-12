@@ -41,6 +41,7 @@
             border-top: 1px solid var(--border-color);
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
+            z-index: 1;
         }
 
         &:not(.Selected) {
@@ -101,10 +102,20 @@
         }
 
         .Content {
+            position: relative;
             line-height: 1;
             text-transform: uppercase;
             padding: 0.5rem 1.2rem;
             padding-top: 0.7rem;
+
+            display: flex;
+
+            span {
+                margin-left: 8px;
+                font-size: 1.2rem;
+                position: relative;
+                z-index: 8;
+            }
         }
     }
 
