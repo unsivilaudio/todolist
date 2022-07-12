@@ -1,4 +1,4 @@
-# A Simple Full Stack React TodoList
+# A Simple Full Stack TodoList
 
 Welcome to a portfolio piece by @unsivilaudio
 

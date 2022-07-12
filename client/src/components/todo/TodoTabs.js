@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import { useActions } from 'hooks/use-actions';
 
 import classes from 'styles/todo/TodoTabs.module.scss';
 
 const TodoTabs = ({ changeCategory, categories }) => {
+    const { showAddCategory } = useActions();
     const [selected, setSelected] = useState('default');
     const [labels, setLabels] = useState(['default']);
 
@@ -19,10 +21,11 @@ const TodoTabs = ({ changeCategory, categories }) => {
     }
 
     function handleAddCategory() {
-        const name = prompt('Enter a new category: ');
-        if (name.trim() !== '') {
-            setLabels(st => [...st, name]);
-        }
+        // const name = prompt('Enter a new category: ');
+        // if (name.trim() !== '') {
+        //     setLabels(st => [...st, name]);
+        // }
+        showAddCategory(true);
     }
 
     const tabulation = useMemo(

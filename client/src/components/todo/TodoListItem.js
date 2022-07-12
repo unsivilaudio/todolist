@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Delete, Edit, ChevronLeft } from '@material-ui/icons';
+import { ReactComponent as Edit } from 'assets/images/pencil-alt-solid.svg';
+import { ReactComponent as Delete } from 'assets/images/trash-solid.svg';
+import { ReactComponent as ChevronLeft } from 'assets/images/chevron-left-solid.svg';
 import Button from 'components/ui/Button';
 
 import classes from 'styles/todo/TodoListItem.module.scss';
@@ -18,8 +20,8 @@ const TodoListItem = props => {
         clicked();
     }
 
-    let editBtn = <Edit style={{ fontSize: 'inherit' }} />;
-    let deleteBtn = <Delete style={{ fontSize: 'inherit' }} />;
+    let editBtn = <Edit />;
+    let deleteBtn = <Delete />;
 
     if (mobileExpand) {
         editBtn = <Button label='edit' />;

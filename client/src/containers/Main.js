@@ -6,6 +6,7 @@ import { ToastContainer } from 'components/Toast';
 import App from 'components/App';
 import AuthStatus from 'components/auth/AuthStatus';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'components/Modal';
 
 const Main = props => {
     const { token, user } = useSelector(state => state.auth);
@@ -20,6 +21,7 @@ const Main = props => {
     return (
         <div className='Main'>
             <ToastContainer />
+            <Modal />
             <AuthStatus user={user} />
             <App user={user} />
         </div>
