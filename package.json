@@ -6,7 +6,8 @@
     "scripts": {
         "dev:server": "npm --prefix server run start",
         "dev:client": "npm --prefix client run start",
-        "build": "npm --prefix server run build"
+        "build": "npm --prefix client run build",
+        "start": "ts-node server/src/index.ts"
     },
     "repository": {
         "type": "git",
@@ -18,5 +19,8 @@
     "bugs": {
         "url": "https://github.com/unsivilaudio/todolist/issues"
     },
-    "homepage": "https://github.com/unsivilaudio/todolist#readme"
+    "homepage": "https://github.com/unsivilaudio/todolist#readme",
+    "dependencies": {
+        "ts-node": "^10.9.1"
+    }
 }
