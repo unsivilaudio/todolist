@@ -19,8 +19,7 @@ const TodoFormItem = ({ item, cancelEdit }) => {
 
     function handleEditSubmit() {
         if (editContent.trim() === '') return;
-        item.content = editContent;
-        updateTodo(item);
+        updateTodo({ ...item, content: editContent });
         cancelEdit(item._id);
     }
 

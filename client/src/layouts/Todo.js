@@ -15,10 +15,12 @@ const Todo = props => {
     const [selectedCat, setSelectedCat] = useState('default');
 
     useEffect(() => {
-        if (auth.user && todos.items.length === 0) fetchTodos();
+        if (auth.user && !todos.items) fetchTodos();
     }, [auth, fetchTodos, todos]);
 
     const todoData = useMemo(() => {
+        if (!todos.items) return [];
+
         return todos.items.filter(x => {
             if (selectedCat === 'default')
                 return !x.category || x.category === 'default';

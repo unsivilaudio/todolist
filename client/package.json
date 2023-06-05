@@ -13,7 +13,8 @@
         "react-toastify": "^8.2.0",
         "redux": "^4.1.2",
         "redux-thunk": "^2.4.1",
-        "sass": "^1.53.0"
+        "sass": "^1.53.0",
+        "todolist": "file:.."
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^5.16.4",

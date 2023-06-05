@@ -23,8 +23,14 @@ interface NotFoundError extends Error {
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config({ path: '.env' });
 } else {
-    app.use(express.static(path.join(process.cwd(), 'client', 'build')));
+    app.use(express.static(path.join(process.cwd(), '..', 'client', 'build')));
 }
+
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+    });
+});
 
 const apiRouter = express.Router({ mergeParams: true });
 apiRouter.use('/auth', authRoutes);
