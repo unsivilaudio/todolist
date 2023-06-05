@@ -2,7 +2,7 @@ import produce from 'immer';
 import * as Types from 'store/todos/todoTypes';
 
 const __INITIAL_STATE = {
-    items: [],
+    items: null,
     categories: ['default'],
 };
 

@@ -19,8 +19,5 @@
     "bugs": {
         "url": "https://github.com/unsivilaudio/todolist/issues"
     },
-    "homepage": "https://github.com/unsivilaudio/todolist#readme",
-    "dependencies": {
-        "ts-node": "^10.9.1"
-    }
+    "homepage": "https://github.com/unsivilaudio/todolist#readme"
 }
