@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import path from 'path';
 import express, { Request, Response } from 'express';
 // @ts-ignore
 import cors from 'cors';
@@ -19,17 +20,11 @@ interface NotFoundError extends Error {
     status?: number;
 }
 
-if (process.env.NODE_ENV === 'production') {
-    dotenv.config({ path: '.env.production' });
-} else {
+if (process.env.NODE_ENV !== 'production') {
     dotenv.config({ path: '.env' });
+} else {
+    app.use(express.static(path.join(process.cwd(), 'client', 'build')));
 }
-
-app.get('/', (req: Request, res: Response) => {
-    res.status(200).json({
-        status: 'ok',
-    });
-});
 
 const apiRouter = express.Router({ mergeParams: true });
 apiRouter.use('/auth', authRoutes);
