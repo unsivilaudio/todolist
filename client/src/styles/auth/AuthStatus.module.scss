@@ -1,0 +1,42 @@
+.AuthStatus {
+    position: relative;
+    color: var(--color-white);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 3rem;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5rem;
+
+    .User {
+        text-decoration: underline;
+        display: flex;
+        font-style: italic;
+    }
+
+    .Logout {
+        cursor: pointer;
+        height: 3rem;
+        display: flex;
+        font-weight: 500;
+        align-items: center;
+        overflow: hidden;
+        span {
+            width: 0;
+            margin-left: 1rem;
+            transition: width 0.3s ease;
+        }
+
+        &:hover {
+            span {
+                width: 8rem;
+            }
+        }
+
+        svg {
+            height: 100%;
+            width: 3.5rem;
+        }
+    }
+}

@@ -1,9 +1,13 @@
 import React from 'react';
 
-import '../../assets/stylesheets/card.scss';
+import classes from 'styles/ui/Card.module.scss';
 
-const card = props => {
-    return <div className='Card'>{props.children}</div>;
+const Card = props => {
+    return (
+        <div className={classes.Card} {...props}>
+            {props.children}
+        </div>
+    );
 };
 
-export default card;
+export default Card;

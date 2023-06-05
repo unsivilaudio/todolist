@@ -1,12 +1,15 @@
 import dotenv from 'dotenv';
+import path from 'path';
 import express, { Request, Response } from 'express';
 // @ts-ignore
 import cors from 'cors';
 
+import requireAuth from './middleware/requireAuth';
 import errorHandler from './handlers/errorHandler';
+import authRoutes from './routes/authRoutes';
 import todoRoutes from './routes/todoRoutes';
 import mongo from './models';
-import Logger from './util/logger';
+import Logger from 'express-better-logger/dist/logger';
 
 const log = new Logger('express');
 const app = express();
@@ -17,19 +20,15 @@ interface NotFoundError extends Error {
     status?: number;
 }
 
-if (process.env.NODE_ENV === 'production') {
-    dotenv.config({ path: '.env.production' });
-} else {
+if (process.env.NODE_ENV !== 'production') {
     dotenv.config({ path: '.env' });
+} else {
+    app.use(express.static(path.join(process.cwd(), 'client', 'build')));
 }
 
-app.get('/', (req: Request, res: Response) => {
-    res.status(200).json({
-        status: 'ok',
-    });
-});
-
 const apiRouter = express.Router({ mergeParams: true });
+apiRouter.use('/auth', authRoutes);
+apiRouter.use(requireAuth);
 apiRouter.use('/todos', todoRoutes);
 
 app.use('/api', apiRouter);

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+:root {
+    --color-white: #ececec;
+    --color-black: #2d2d2d;
+
+    --bg-transparent-light: rgba(255, 255, 255, 0.2);
+
+    --text-white: #ececec;
+    --text-muted: #c2ced1;
+    --text-black: #2d2d2d;
+
+    --input-color-bg: #eee;
+    --input-color-fg: #3d3d3d;
+
+    --button-color-primary: #493ec1;
+    --button-color-primary-hover: #3122d2;
+    --button-color-secondary: #c1493e;
+    --button-color-secondary-hover: #d83829;
+    --button-color-tertiary: #3ec149;
+    --button-color-tertiary-hover: #27d735;
+
+    --button-shadow-sm: 0 2px 3px 1px rgba(0, 0, 0, 0.18);
+    --button-shadow-lg: 0 3px 7px 1px rgba(0, 0, 0, 0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 62.5%;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+body {
+    background: linear-gradient(to bottom, #bbd2c5 10%, #536976 80%);
+    font-weight: 300;
+    font-size: 1.6rem;
+}
+
+@media screen and (max-width: 75em) {
+    html {
+        font-size: 56.25%;
+    }
+}
+
+@media screen and (max-width: 56.25em) {
+    html {
+        font-size: 50%;
+    }
+}

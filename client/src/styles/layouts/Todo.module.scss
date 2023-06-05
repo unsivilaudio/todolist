@@ -1,0 +1,75 @@
+.Todo {
+    padding: 2rem 0;
+
+    .Header,
+    .SubHeader {
+        text-align: left;
+        line-height: 0.7;
+        margin: 1.2rem 0;
+        padding: 0 2.5rem;
+    }
+
+    .Header {
+        font-size: 4rem;
+        font-weight: 400;
+    }
+
+    .SubHeader {
+        font-size: 1.2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    hr {
+        color: rgba(255, 255, 255, 0.2);
+        margin: 0 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 75em) {
+    .Todo {
+        .Header,
+        .SubHeader {
+            margin: 1.5rem 0;
+            padding: 0 3rem;
+        }
+    }
+}
+
+@media screen and (max-width: 56.25em) {
+    .Todo {
+        margin-top: 2rem;
+        .Header,
+        .SubHeader {
+            text-align: center;
+        }
+
+        .Header {
+            font-size: 6rem;
+            span {
+                margin-left: -0.5rem;
+                background: rgba(255, 255, 255, 0.2);
+                padding: 0 0.8rem;
+                line-height: 0.8rem;
+                border-radius: 1rem;
+            }
+        }
+
+        .SubHeader {
+            margin-top: 2.2rem;
+            font-size: 1.7rem;
+        }
+    }
+}
+
+@media screen and (max-width: 30em) {
+    .Todo {
+        margin-top: 0;
+        min-height: 100vh;
+
+        .Header {
+            padding: 1rem;
+        }
+    }
+}

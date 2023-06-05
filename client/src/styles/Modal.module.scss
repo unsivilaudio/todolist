@@ -1,0 +1,21 @@
+.Modal {
+    z-index: 1;
+
+    .Backdrop {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        z-index: 10;
+        transform: scale(0);
+        transition: opacity 0.3s ease-out;
+    }
+
+    &.Show {
+        .Backdrop {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}

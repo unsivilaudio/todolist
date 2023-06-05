@@ -1,4 +1,4 @@
-import Logger from '../util/logger';
+import Logger from 'express-better-logger';
 import mongoose, { ConnectOptions } from 'mongoose';
 
 const log = new Logger('mongoose');

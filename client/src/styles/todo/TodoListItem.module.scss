@@ -1,0 +1,193 @@
+.TodoListItem {
+    font-size: 2rem;
+    color: inherit;
+    background: var(--bg-transparent-light);
+    margin: 0.7rem 0;
+    padding: 1rem 2.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+
+    .Content {
+        transition: all 0.3s ease-in-out;
+
+        span {
+            cursor: pointer;
+        }
+
+        &.Done {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+    }
+
+    .Chevron {
+        display: none;
+    }
+
+    .Actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .Delete,
+        .Edit {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            line-height: 2rem;
+
+            svg {
+                height: 2.75rem;
+            }
+        }
+
+        .Edit:hover {
+            color: rgb(255, 197, 88);
+        }
+
+        .Delete:hover {
+            color: rgb(250, 77, 77);
+        }
+
+        span:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 75em) {
+    .TodoListItem {
+        font-size: 1.8rem;
+
+        .Actions {
+            span:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 56.25em) {
+    .TodoListItem {
+        font-size: 2.2rem;
+
+        .Actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .Delete,
+            .Edit {
+                font-size: 3rem;
+                display: flex;
+                align-items: center;
+            }
+
+            span:not(:last-child) {
+                margin-right: 2.4rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 36.25em) {
+    .TodoListItem {
+        position: relative;
+        padding-left: 2.75rem;
+        padding-right: 2.75rem;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .Content {
+            // transition: all 5s ease;
+            flex: 0 1 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            &.Expand {
+                overflow: auto;
+                text-overflow: unset;
+                white-space: unset;
+                padding-bottom: 1.5rem;
+            }
+        }
+
+        .Chevron {
+            position: absolute;
+            height: 8rem;
+            top: 0;
+            right: 0;
+            transform: translateY(calc(-50% + 3.2rem));
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            &.Expand {
+                transform: rotate(-90deg) translateX(1rem);
+            }
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg {
+                color: currentColor;
+                font-size: 8rem;
+            }
+        }
+
+        .Actions {
+            flex-basis: 100%;
+            overflow: hidden;
+            height: 0;
+            transition: height 0.3s ease-in-out 50ms;
+
+            svg {
+                display: none;
+            }
+
+            span {
+                height: 5rem;
+
+                &:not(:last-child) {
+                    margin-right: 0;
+                }
+            }
+
+            &.Expand {
+                height: 5rem;
+            }
+
+            .Edit,
+            .Delete {
+                color: var(--color-white);
+                flex-basis: 40%;
+
+                button {
+                    font-size: 2rem;
+                    text-transform: uppercase;
+                    width: 100%;
+                    border-radius: 1rem;
+                }
+            }
+
+            .Edit {
+                &:hover {
+                    color: currentColor;
+                }
+                button {
+                    background-color: var(--button-color-primary);
+                }
+            }
+
+            .Delete {
+                &:hover {
+                    color: currentColor;
+                }
+                button {
+                    background-color: var(--button-color-secondary);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "todolist",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev:server": "npm --prefix server run start",
+        "dev:client": "npm --prefix client run start",
+        "build": "npm --prefix server run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/unsivilaudio/todolist.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/unsivilaudio/todolist/issues"
+    },
+    "homepage": "https://github.com/unsivilaudio/todolist#readme"
+}
