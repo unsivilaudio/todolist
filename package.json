@@ -6,7 +6,7 @@
     "scripts": {
         "dev:server": "npm --prefix server run start",
         "dev:client": "npm --prefix client run start",
-        "build": "npm --prefix client run build",
+        "build": "npm --prefix client install && npm --prefix server install && npm --prefix client run build",
         "start": "ts-node server/src/index.ts"
     },
     "repository": {
